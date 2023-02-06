@@ -40,15 +40,11 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Адресс', 'url' => ['/address']],
             ['label' => 'Товары', 'url' => ['/product']],
-            ['label' => 'Избранные', 'url' => ['/favourites']],
-            ['label' => 'Карты', 'url' => ['/card']],
-            ['label' => 'Категории', 'url' => ['/category']],
-            ['label' => 'Компании', 'url' => ['/company']],
             ['label' => 'Заказы', 'url' => ['/order']],
             ['label' => 'Обзоры', 'url' => ['/review']],
             ['label' => 'Корзина', 'url' => ['/busket']],
+            ['label' => 'Регистрация', 'url' => ['/user/create']],
             Yii::$app->user->isGuest
                 ? ['label' => 'Войти', 'url' => ['/site/login']]
                 : '<li class="nav-item">'

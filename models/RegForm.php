@@ -28,8 +28,11 @@ use Yii;
  * @property Review[] $reviews
  * @property Role $role
  */
-class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class RegForm extends User
 {
+    public $passwordConfirm;
+    public $agree;
+
     /**
      * {@inheritdoc}
      */
@@ -44,11 +47,16 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['id_role', 'id_card', 'login', 'password', 'email', 'phone', 'gender', 'city', 'currency', 'date_of_birth'], 'required'],
+            [['id_role', 'id_card', 'login', 'password', 'passwordConfirm', 'email', 'phone', 'gender', 'city', 'currency', 'date_of_birth', 'agree'], 'required'],
+            ['login', 'match', 'pattern' => '/^[A-Za-z\$\-]{0,}$/u', 'message'=>'Только Латинские буквы'],
+            ['login', 'unique', 'message'=>'Такой логин уже существует'],
+            ['email', 'email', 'message' => 'Некорректный email'],
+            ['passwordConfirm', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароли должны совпадать'],
+            ['agree', 'boolean'],
+            ['agree', 'compare', 'compareValue' => true, 'message' => 'Необходимо согласие на обработку данных'],
+            ['phone', 'match', 'pattern' => '/^[0-9\$\-]{0,}$/u', 'message' => 'Некорректный номер телефона'],
             [['id_role', 'id_card'], 'integer'],
             [['date_of_birth'], 'safe'],
-            [['login', 'password', 'email', 'gender', 'city', 'currency'], 'string', 'max' => 255],
-            [['phone'], 'string', 'max' => 15],
             [['id_card'], 'exist', 'skipOnError' => true, 'targetClass' => Card::class, 'targetAttribute' => ['id_card' => 'id']],
             [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id']],
         ];
@@ -65,153 +73,16 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'id_card' => 'Карта',
             'login' => 'Логин',
             'password' => 'Пароль',
+            'passwordConfirm' => 'Подтверждение пароля',
             'email' => 'Электронная почта',
             'phone' => 'Телефон',
             'gender' => 'Пол',
             'city' => 'Город',
             'currency' => 'Валюта',
             'date_of_birth' => 'Дата рождения',
+            'agree' => 'Даю согласие на обработку персональных данных',
         ];
     }
 
-    /**
-     * Gets query for [[Addresses]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAddresses()
-    {
-        return $this->hasMany(Address::class, ['id_user' => 'id']);
-    }
 
-    /**
-     * Gets query for [[Buskets]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getBuskets()
-    {
-        return $this->hasMany(Busket::class, ['id_user' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Card]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCard()
-    {
-        return $this->hasOne(Card::class, ['id' => 'id_card']);
-    }
-
-    /**
-     * Gets query for [[Companies]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCompanies()
-    {
-        return $this->hasMany(Company::class, ['id_user' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Favourites]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFavourites()
-    {
-        return $this->hasMany(Favourites::class, ['id_user' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Orders]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getOrders()
-    {
-        return $this->hasMany(Order::class, ['id_user' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Reviews]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getReviews()
-    {
-        return $this->hasMany(Review::class, ['id_user' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Role]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRole()
-    {
-        return $this->hasOne(Role::class, ['id' => 'id_role']);
-    }
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentity($id)
-    {
-        return self::findOne($id);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-
-    }
-
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
-    {
-        return self::find()->where(['login' => $username])->one();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
-    }
 }
