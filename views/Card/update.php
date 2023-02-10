@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Card $model */
 
 $this->title = 'Update Card: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Карты', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="card-update">
 

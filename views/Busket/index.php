@@ -11,15 +11,11 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Корзина';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="busket-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Добавить в корзину', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,12 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             'id_user',
             'id_product',
             'sum',
-            'amount',
-            //'add_at',
+            'add_at',
             //'delete_at',
             [
                 'class' => ActionColumn::className(),

@@ -11,15 +11,11 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Заказы';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Создать заказ ', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,15 +25,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+          //  'id',
             'id_user',
             'id_address',
-            'id_card',
+            //'id_card',
             'id_product',
-            //'id_status',
             //'discount',
-            //'sum',
-            //'date',
+            'sum',
+            'date',
+            'id_status',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Order $model, $key, $index, $column) {

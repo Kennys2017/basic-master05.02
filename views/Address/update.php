@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Address $model */
 
 $this->title = 'Обновить адресс: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Addresses', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="address-update">
 

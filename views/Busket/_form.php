@@ -12,7 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
 
     <?= $form->field($model, 'id_user')->textInput() ?>
 
@@ -20,7 +19,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sum')->textInput() ?>
 
-    <?= $form->field($model, 'amount')->textInput() ?>
 
     <?= $form->field($model, 'add_at')->textInput() ?>
 

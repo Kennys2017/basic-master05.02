@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /** @var app\models\Busket $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="busket-view">
@@ -33,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_user',
             'id_product',
             'sum',
-            'amount',
             'add_at',
             'delete_at',
         ],

@@ -11,7 +11,6 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Карты';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="card-index">
 

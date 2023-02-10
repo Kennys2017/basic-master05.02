@@ -11,7 +11,6 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Обзоры';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="review-index">
 
@@ -29,16 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'id_user',
             'id_product',
             'advantages:ntext',
             'disadvantages:ntext',
-            //'rating',
-            //'description:ntext',
+            'description:ntext',
             //'photo',
             //'video',
-            //'created_at',
+            'rating',
+            'created_at',
             //'updated_at',
             [
                 'class' => ActionColumn::className(),

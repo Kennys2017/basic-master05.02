@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /** @var app\models\Favourites $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Избранное', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="favourites-view">

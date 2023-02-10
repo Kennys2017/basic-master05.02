@@ -11,7 +11,6 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Roles';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="role-index">
 

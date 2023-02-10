@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Favourites $model */
 
 $this->title = 'Добавить избранное';
-$this->params['breadcrumbs'][] = ['label' => 'Избранное', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="favourites-create">
 

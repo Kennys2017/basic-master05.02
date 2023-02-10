@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype'=> 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'id_category')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Category::find()->all(),'id','name')) ?>
 
@@ -18,9 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'discount')->textInput() ?>
+    <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
@@ -28,17 +26,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mode_of_application')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'rating')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <?= $form->field($model, 'isDiscount')->textInput() ?>
+    <?= $form->field($model, 'discount')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Добавить', ['class' => 'btn btn-success']) ?>

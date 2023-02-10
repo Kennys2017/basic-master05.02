@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Product $model */
 
 $this->title = 'Обновить товар: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Товары', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Обновить товары';
 ?>
 <div class="product-update">
 

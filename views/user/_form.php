@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use kartik\datecontrol\DateControl;
+use kartik\date\DatePicker;
 /** @var yii\web\View $this */
 /** @var app\models\User $model */
 /** @var yii\widgets\ActiveForm $form */
@@ -28,7 +29,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'currency')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'date_of_birth')->textInput() ?>
+    <?= $form->field($model, 'date_of_birth')->widget(DatePicker::className(),[
+        'options'=>['placeholder'=> ''],
+        'type'=>DatePicker::TYPE_INPUT,
+         'pluginOptions'=>[
+                 'autoclose'=> true,
+         ]
+]);
+
+    ?>
 
     <?= $form->field($model, 'agree')->checkbox() ?>
 

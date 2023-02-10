@@ -11,7 +11,6 @@ use Yii;
  * @property int $id_user
  * @property int $id_product
  * @property float $sum
- * @property float $amount
  * @property string $add_at
  * @property string $delete_at
  *
@@ -36,7 +35,7 @@ class Busket extends \yii\db\ActiveRecord
         return [
             [['id', 'id_user', 'id_product', 'sum', 'amount', 'add_at', 'delete_at'], 'required'],
             [['id', 'id_user', 'id_product'], 'integer'],
-            [['sum', 'amount'], 'number'],
+            [['sum'], 'number'],
             [['add_at', 'delete_at'], 'safe'],
             [['id'], 'unique'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
@@ -54,7 +53,6 @@ class Busket extends \yii\db\ActiveRecord
             'id_user' => 'Логин пользователя',
             'id_product' => 'Название товара',
             'sum' => 'Сумма',
-            'amount' => 'Итого',
             'add_at' => 'Дата создания',
             'delete_at' => 'Дата удаления',
         ];

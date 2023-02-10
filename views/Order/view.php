@@ -7,8 +7,6 @@ use yii\widgets\DetailView;
 /** @var app\models\Order $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Заказы', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="order-view">

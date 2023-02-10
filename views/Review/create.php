@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Review $model */
 
 $this->title = 'Добавить обзор ';
-$this->params['breadcrumbs'][] = ['label' => 'Обзоры', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="review-create">
 

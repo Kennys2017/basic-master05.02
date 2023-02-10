@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Busket $model */
 
 $this->title = 'Update Busket: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="busket-update">
 

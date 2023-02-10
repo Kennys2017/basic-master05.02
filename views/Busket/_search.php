@@ -23,7 +23,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sum') ?>
 
-    <?= $form->field($model, 'amount') ?>
 
     <?php // echo $form->field($model, 'add_at') ?>
 

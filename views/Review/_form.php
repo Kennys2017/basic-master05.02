@@ -10,9 +10,8 @@ use yii\widgets\ActiveForm;
 
 <div class="review-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
 
     <?= $form->field($model, 'id_product')->dropDownList(\yii\helpers\ArrayHelper::map(\app\models\Product::find()->all(),'id','name')) ?>
 
@@ -20,17 +19,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'disadvantages')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'rating')->textInput() ?>
-
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'photo')->fileInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'video')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'video')->fileInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Добавить', ['class' => 'btn btn-success']) ?>

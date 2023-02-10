@@ -6,9 +6,6 @@ use yii\helpers\Html;
 /** @var app\models\Company $model */
 
 $this->title = 'Update Company: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Компании', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Обновить';
 ?>
 <div class="company-update">
 

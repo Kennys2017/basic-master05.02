@@ -7,6 +7,7 @@ use app\models\ReviewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ReviewController implements the CRUD actions for Review model.
@@ -68,15 +69,24 @@ class ReviewController extends Controller
     public function actionCreate()
     {
         $model = new Review();
-
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
 
+            if (Yii::$app->request->IsPost) {
+                $model->load(Yii::$app->request->post());
+                $model->photo = UploadedFile::getInstance($model, 'image');
+                $model->photo->saveAs("image/Reviews/{$model->photo->baseName}.{$model->photo->extension}");
+                $model->save(false);
+                return $this->redirect(['view', 'id' => $model->id]);
+
+                $model->load(Yii::$app->request->post());
+                $model->video = UploadedFile::getInstance($model, 'video');
+                $model->video->saveAs("videos/Reviews/{$model->video->baseName}.{$model->video->extension}");
+                $model->save(false);
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                $model->loadDefaultValues();
+            }
+        }
         return $this->render('create', [
             'model' => $model,
         ]);
