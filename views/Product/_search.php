@@ -19,35 +19,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_category') ?>
 
-    <?= $form->field($model, 'id_company') ?>
-
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'discount') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'characteristic') ?>
-
-    <?php // echo $form->field($model, 'mode_of_application') ?>
-
-    <?php // echo $form->field($model, 'link') ?>
-
-    <?php // echo $form->field($model, 'rating') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
+    <?= $form->field($model, 'created_at') ?>
 
     <?php // echo $form->field($model, 'price') ?>
 
-    <?php // echo $form->field($model, 'isDiscount') ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Обновить', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

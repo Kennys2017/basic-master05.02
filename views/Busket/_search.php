@@ -23,14 +23,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'sum') ?>
 
-
-    <?php // echo $form->field($model, 'add_at') ?>
-
-    <?php // echo $form->field($model, 'delete_at') ?>
+    <?= $form->field($model, 'add_at') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Обновить', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

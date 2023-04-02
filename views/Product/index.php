@@ -10,14 +10,15 @@ use yii\grid\GridView;
 /** @var app\models\ProductSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Товары';
+$this->title = 'Products';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Добавить товар', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Product', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,21 +30,11 @@ $this->title = 'Товары';
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            //'id_category',
-            //'id_company',
+            'id_category',
             'name',
             'image',
-
-            'description:ntext',
-            'characteristic:ntext',
-            'mode_of_application:ntext',
-            //'link',
-            'rating',
             //'created_at',
-            //'updated_at',
             'price',
-            'discount',
-            //'isDiscount',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Product $model, $key, $index, $column) {

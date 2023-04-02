@@ -19,7 +19,7 @@ class BusketSearch extends Busket
         return [
             [['id', 'id_user', 'id_product'], 'integer'],
             [['sum'], 'number'],
-            [['add_at', 'delete_at'], 'safe'],
+            [['add_at'], 'safe'],
         ];
     }
 
@@ -64,7 +64,6 @@ class BusketSearch extends Busket
             'id_product' => $this->id_product,
             'sum' => $this->sum,
             'add_at' => $this->add_at,
-            'delete_at' => $this->delete_at,
         ]);
 
         return $dataProvider;

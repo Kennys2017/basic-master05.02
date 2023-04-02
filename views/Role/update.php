@@ -6,6 +6,9 @@ use yii\helpers\Html;
 /** @var app\models\Role $model */
 
 $this->title = 'Update Role: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Roles', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="role-update">
 

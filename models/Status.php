@@ -39,8 +39,8 @@ class Status extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код',
-            'name' => 'Название',
+            'id' => 'ID',
+            'name' => 'Name',
         ];
     }
 

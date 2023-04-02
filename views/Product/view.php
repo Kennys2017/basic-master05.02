@@ -7,6 +7,8 @@ use yii\widgets\DetailView;
 /** @var app\models\Product $model */
 
 $this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="product-view">
@@ -14,11 +16,11 @@ $this->title = $model->name;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Обновить', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Вы уверены, что хотите удалить товар?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -29,23 +31,10 @@ $this->title = $model->name;
         'attributes' => [
             'id',
             'id_category',
-            'id_company',
             'name',
-            [
-                    'attribute'=> 'image',
-                    'value'=> 'image/Products'.$model->image,
-                    'format'=>['image', ['width'=>100, 'height'=>100, 'alt']],
-            ],
-            'discount',
-            'description:ntext',
-            'characteristic:ntext',
-            'mode_of_application:ntext',
-            'link',
-            'rating',
+            'image',
             'created_at',
-            'updated_at',
             'price',
-            'isDiscount',
         ],
     ]) ?>
 

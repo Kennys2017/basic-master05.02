@@ -19,23 +19,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_user') ?>
 
-    <?= $form->field($model, 'id_address') ?>
-
-    <?= $form->field($model, 'id_card') ?>
-
     <?= $form->field($model, 'id_product') ?>
 
-    <?php // echo $form->field($model, 'id_status') ?>
+    <?= $form->field($model, 'id_status') ?>
 
-    <?php // echo $form->field($model, 'discount') ?>
-
-    <?php // echo $form->field($model, 'sum') ?>
+    <?= $form->field($model, 'sum') ?>
 
     <?php // echo $form->field($model, 'date') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Поиск', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Обновить', ['class' => 'btn btn-outline-secondary']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

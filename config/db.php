@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=no_ozone1',
+    'dsn' => 'mysql:host=localhost;dbname=air_wars',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

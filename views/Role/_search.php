@@ -19,10 +19,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'can_update') ?>
-
-    <?= $form->field($model, 'can_delete') ?>
-
     <?= $form->field($model, 'created_at') ?>
 
     <div class="form-group">

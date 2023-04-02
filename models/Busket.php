@@ -12,7 +12,6 @@ use Yii;
  * @property int $id_product
  * @property float $sum
  * @property string $add_at
- * @property string $delete_at
  *
  * @property Product $product
  * @property User $user
@@ -33,11 +32,10 @@ class Busket extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'id_user', 'id_product', 'sum', 'amount', 'add_at', 'delete_at'], 'required'],
-            [['id', 'id_user', 'id_product'], 'integer'],
+            [['id_user', 'id_product', 'sum'], 'required'],
+            [['id_user', 'id_product'], 'integer'],
             [['sum'], 'number'],
-            [['add_at', 'delete_at'], 'safe'],
-            [['id'], 'unique'],
+            [['add_at'], 'safe'],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
             [['id_product'], 'exist', 'skipOnError' => true, 'targetClass' => Product::class, 'targetAttribute' => ['id_product' => 'id']],
         ];
@@ -49,12 +47,11 @@ class Busket extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код',
-            'id_user' => 'Логин пользователя',
-            'id_product' => 'Название товара',
-            'sum' => 'Сумма',
-            'add_at' => 'Дата создания',
-            'delete_at' => 'Дата удаления',
+            'id' => 'ID',
+            'id_user' => 'Id User',
+            'id_product' => 'Id Product',
+            'sum' => 'Sum',
+            'add_at' => 'Add At',
         ];
     }
 

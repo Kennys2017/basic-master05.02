@@ -16,6 +16,9 @@ $this->title = 'Заказы';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>
+        <?= Html::a('Добавить заказ', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -25,15 +28,12 @@ $this->title = 'Заказы';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-          //  'id',
+            //'id',
             'id_user',
-            'id_address',
-            //'id_card',
             'id_product',
-            //'discount',
-            'sum',
-            'date',
             'id_status',
+            'sum',
+            //'date',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Order $model, $key, $index, $column) {

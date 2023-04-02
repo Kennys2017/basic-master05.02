@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Product;
 
 class SiteController extends Controller
 {
@@ -61,7 +62,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $post = Product::find()->where(['id' =>'1'])->orderBy(['created_at' =>SORT_DESC])->limit(8)->all();
+        return $this->render('index', [
+            'post' => $post,
+        ]);
     }
 
     /**

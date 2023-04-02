@@ -5,7 +5,9 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Busket $model */
 
-$this->title = 'Добавление в корзину';
+$this->title = 'Create Busket';
+$this->params['breadcrumbs'][] = ['label' => 'Buskets', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="busket-create">
 

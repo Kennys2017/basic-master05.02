@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\RegForm;
+use Yii;
 use app\models\User;
+use app\models\RegForm;
 use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -65,18 +66,20 @@ class UserController extends Controller
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
+     * @return mixed
      */
     public function actionCreate()
     {
         $model = new RegForm();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+       
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->user->login($model);
                 return $this->redirect(['/user']);
             }
-        } else {
-            $model->loadDefaultValues();
-        }
+        // } else {
+        //     $model->loadDefaultValues();
+        // }
 
         return $this->render('create', [
             'model' => $model,

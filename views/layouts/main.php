@@ -32,7 +32,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <header id="header">
     <?php
     NavBar::begin([
-        'brandLabel' => 'No Ozone',
+        'brandLabel' => "air<img height='50px' src='../logo.svg'>Wars",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
@@ -42,7 +42,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Товары', 'url' => ['/product']],
             ['label' => 'Заказы', 'url' => ['/order']],
-            ['label' => 'Обзоры', 'url' => ['/review']],
             ['label' => 'Корзина', 'url' => ['/busket']],
             ['label' => 'Регистрация', 'url' => ['/user/create']],
             Yii::$app->user->isGuest
@@ -50,7 +49,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        'Logout (' . Yii::$app->user->identity->login . ')',
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
@@ -61,8 +60,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     ?>
 </header>
 
+
 <main id="main" class="flex-shrink-0" role="main">
     <div class="container">
+
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
@@ -74,7 +75,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; No Ozone <?= date('Y') ?></div>
+            <div class="col-md-6 text-center text-md-start">&copy; Air Wars <?= date('Y') ?></div>
         </div>
     </div>
 </footer>

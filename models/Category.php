@@ -29,7 +29,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 100],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 
@@ -39,8 +39,8 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код',
-            'name' => 'Название',
+            'id' => 'ID',
+            'name' => 'Name',
         ];
     }
 

@@ -8,9 +8,7 @@ use Yii;
  * This is the model class for table "role".
  *
  * @property int $id
- * @property string $name
- * @property int $can_update
- * @property int $can_delete
+ * @property int $name
  * @property string $created_at
  *
  * @property User[] $users
@@ -31,10 +29,9 @@ class Role extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'can_update', 'can_delete', 'created_at'], 'required'],
-            [['can_update', 'can_delete'], 'integer'],
+            [['name'], 'required'],
+            [['name'], 'integer'],
             [['created_at'], 'safe'],
-            [['name'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,11 +41,9 @@ class Role extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'Код',
-            'name' => 'Название',
-            'can_update' => 'Может обновлять',
-            'can_delete' => 'Может удалять',
-            'created_at' => 'Дата создания',
+            'id' => 'ID',
+            'name' => 'Name',
+            'created_at' => 'Created At',
         ];
     }
 

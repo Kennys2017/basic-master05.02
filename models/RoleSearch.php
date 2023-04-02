@@ -17,8 +17,8 @@ class RoleSearch extends Role
     public function rules()
     {
         return [
-            [['id', 'can_update', 'can_delete'], 'integer'],
-            [['name', 'created_at'], 'safe'],
+            [['id', 'name'], 'integer'],
+            [['created_at'], 'safe'],
         ];
     }
 
@@ -59,12 +59,9 @@ class RoleSearch extends Role
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'can_update' => $this->can_update,
-            'can_delete' => $this->can_delete,
+            'name' => $this->name,
             'created_at' => $this->created_at,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
