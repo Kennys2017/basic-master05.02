@@ -10,16 +10,13 @@ use yii\grid\GridView;
 /** @var app\models\BusketSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Buskets';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Корзина';
 ?>
 <div class="busket-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Busket', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,11 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'id_user',
+           // 'id',
+            //'id_user',
             'id_product',
             'sum',
-            'add_at',
+            //'add_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Busket $model, $key, $index, $column) {

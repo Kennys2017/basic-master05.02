@@ -32,7 +32,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['id_role', 'login', 'password', 'email'], 'required'],
+            [['login', 'password', 'email'], 'required'],
             [['id_role'], 'integer'],
             [['login', 'password', 'email'], 'string', 'max' => 255],
             [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id']],

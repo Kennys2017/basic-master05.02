@@ -62,7 +62,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $post = Product::find()->where(['id' =>'1'])->orderBy(['created_at' =>SORT_DESC])->limit(8)->all();
+        $post = Product::find()->orderBy(['created_at' =>SORT_DESC])->limit(8)->all();
         return $this->render('index', [
             'post' => $post,
         ]);

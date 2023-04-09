@@ -49,9 +49,9 @@ class Busket extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_user' => 'Id User',
-            'id_product' => 'Id Product',
-            'sum' => 'Sum',
-            'add_at' => 'Add At',
+            'id_product' => 'Товар',
+            'sum' => 'Стоимость',
+            'add_at' => 'Дата добавления',
         ];
     }
 

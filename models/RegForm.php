@@ -28,14 +28,13 @@ class RegForm extends User
     public function rules()
     {
         return [
-            [['id_role', 'login', 'password', 'email', 'passwordConfirm', 'agree'], 'required' , 'message' =>'Поле обязательно для заполнения'],
+            [['login', 'password', 'email', 'passwordConfirm', 'agree'], 'required' , 'message' =>'Поле обязательно для заполнения'],
             ['login', 'match', 'pattern' => '/^[a-zA-Z]{1,}$/u', 'message'=>'Только латинские буквы'],
             ['login', 'unique', 'message'=>'Такой логин уже существует'],
             ['email','email', 'message'=>'Некорректный email'],
             ['passwordConfirm', 'compare', 'compareAttribute' => 'password', 'message' => 'Пароли должны совпадать'],
             ['agree', 'boolean'],
             ['agree', 'compare', 'compareValue' => true, 'message'=> 'Необходимо согласиться'],
-            [['id_role'], 'integer'],
             [['login', 'password', 'email'], 'string', 'max' => 255],
             [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id']],
         ];

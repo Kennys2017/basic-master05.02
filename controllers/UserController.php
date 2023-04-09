@@ -72,11 +72,7 @@ class UserController extends Controller
     {
         $model = new RegForm();
 
-       
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                Yii::$app->user->login($model);
-                return $this->redirect(['/user']);
-            }
+      
         // } else {
         //     $model->loadDefaultValues();
         // }
