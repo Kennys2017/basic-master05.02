@@ -29,6 +29,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
+            ['name', 'match', 'pattern' => '/^[а-яА-Я]{1,}$/u', 'message'=>'Только русские буквы буквы'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -40,7 +41,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Название',
         ];
     }
 

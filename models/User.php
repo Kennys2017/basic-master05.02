@@ -12,12 +12,23 @@ use Yii;
  * @property string $login
  * @property string $password
  * @property string $email
- *
  * @property Busket[] $buskets
  * @property Role $role
  */
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'id_role' => 'Id Role',
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'passwordConfirm' => 'Подтверждение пароля',
+            'email' => 'Email',
+            'agree' => 'Даю согласие на обработку данных',
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -29,29 +40,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
-        return [
-            [['login', 'password', 'email'], 'required'],
-            [['id_role'], 'integer'],
-            [['login', 'password', 'email'], 'string', 'max' => 255],
-            [['id_role'], 'exist', 'skipOnError' => true, 'targetClass' => Role::class, 'targetAttribute' => ['id_role' => 'id']],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'id_role' => 'Id Role',
-            'login' => 'Логин',
-            'password' => 'Пароль',
-            'email' => 'Email',
-        ];
-    }
+  
 
     /**
      * Gets query for [[Buskets]].

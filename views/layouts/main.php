@@ -26,35 +26,47 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body style="display:flex; justify-content:space-between;" class="d-flex flex-column">
 <?php $this->beginBody() ?>
 
-<header id="header">
+<header id="header" >
     <?php
     NavBar::begin([
         'brandLabel' => "air<img height='50px' src='../logo.svg'>Wars",
         'brandUrl' => Yii::$app->homeUrl,
         'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Товары', 'url' => ['/product']],
-            ['label' => 'Заказы', 'url' => ['/order']],
-            ['label' => 'Корзина', 'url' => ['/busket']],
-            ['label' => 'Регистрация', 'url' => ['/user/create']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Авторизация', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
+
+    $items= [];
+    if( Yii::$app->user->isGuest){
+        $items[]= ['label' => 'Регистрация', 'url' => ['/user/create']];
+        $items[]= ['label' => 'Авторизация', 'url' => ['/site/login']];
+    }else{
+        if(Yii::$app->user->identity->id_role ==2){
+            $items[]= ['label' => 'Административная панель', 'url' => ['/admin']];
+        }else{
+            $items[]= ['label' => 'Корзина', 'url' => ['/busket']];
+            $items[]= ['label' => ' Личный кабинет', 'url' => ['/user/view?id= '.Yii::$app->user->identity->id.'']];
+        }
+        $items[] = '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->login . ')',
+                        'Выйти (' . Yii::$app->user->identity->login . ')',
                         ['class' => 'nav-link btn btn-link logout']
                     )
                     . Html::endForm()
-                    . '</li>'
-        ]
+                    . '</li>';
+    }
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'items' => $items,
+        // 'items' => [
+        //     ['label' => 'Главная', 'url' => ['/site/index']],
+        //     ['label' => 'Товары', 'url' => ['/product']],
+        //     ['label' => 'Заказы', 'url' => ['/order']],
+        //     
+
     ]);
     NavBar::end();
     ?>
@@ -72,13 +84,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
-    <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; Air Wars <?= date('Y') ?></div>
-        </div>
-    </div>
-</footer>
 
 <?php $this->endBody() ?>
 </body>

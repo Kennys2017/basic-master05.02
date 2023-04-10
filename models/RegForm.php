@@ -12,7 +12,6 @@ use Yii;
  * @property string $login
  * @property string $password
  * @property string $email
- *
  * @property Busket[] $buskets
  * @property Role $role
  */

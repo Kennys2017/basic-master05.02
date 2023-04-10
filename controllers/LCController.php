@@ -2,17 +2,35 @@
 
 namespace app\controllers;
 
-use app\models\Company;
-use app\models\CompanySearch;
+use Yii;
+use app\models\User;
+use app\models\RegForm;
+use app\models\UserSearch;
+use app\models\OrderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CompanyController implements the CRUD actions for Company model.
+ * UserController implements the CRUD actions for User model.
  */
-class CompanyController extends Controller
+class LCController extends Controller
 {
+
+    public function beforeAction($action)
+    {
+        if(Yii::$app->user->isGuest){
+            $this->redirect(['/site/login']);
+            return false;
+        }else{
+
+        }
+        if(!parent::beforeAction($action)){
+            return false;
+        }
+
+        return true;
+    }
     /**
      * @inheritDoc
      */
@@ -32,13 +50,13 @@ class CompanyController extends Controller
     }
 
     /**
-     * Lists all Company models.
+     * Lists all User models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new CompanySearch();
+        $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +66,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Displays a single Company model.
+     * Displays a single User model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,21 +79,19 @@ class CompanyController extends Controller
     }
 
     /**
-     * Creates a new Company model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
+     * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Company();
+        $model = new RegForm();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if($model->load(Yii::$app->request->post()) && $model->save()){
+                Yii::$app->user->login($model);
+                return $this->redirect(['/user']);
             }
-        } else {
-            $model->loadDefaultValues();
-        }
 
         return $this->render('create', [
             'model' => $model,
@@ -83,7 +99,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Updates an existing Company model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +119,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Deletes an existing Company model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +133,15 @@ class CompanyController extends Controller
     }
 
     /**
-     * Finds the Company model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Company the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Company::findOne(['id' => $id])) !== null) {
+        if (($model = User::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

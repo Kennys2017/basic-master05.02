@@ -1,24 +1,22 @@
 <?php
 
-use app\models\Category;
+use app\models\Order;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\CategorySearch $searchModel */
+/** @var app\models\OrderSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Категории';
+$this->title = 'Заказы';
 ?>
-<div class="category-index">
+<div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Добавить категорию', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -29,10 +27,14 @@ $this->title = 'Категории';
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'name',
+            //'id_user',
+            'id_product',
+            'id_status',
+            'sum',
+            'date',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Category $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Order $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
